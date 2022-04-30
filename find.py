@@ -3,8 +3,9 @@ Concurrent search for webelements.
 Funtionality of element() can be expanded by adding
 new functions to search_methods dictionary.
 """
+# 30/04/2022
+# EternalAzure
 
-import logging
 from typing import List
 
 from selenium.webdriver.remote.webelement import WebElement
@@ -12,8 +13,6 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.common.exceptions import NoSuchElementException
 
 import asyncio
-
-logger = logging.getLogger(__name__)
 
 
 def element(driver: WebDriver, locators: List[tuple], attempts: int = 5, method = "first") -> WebElement:

@@ -1,7 +1,14 @@
 """
-Concurrent search for webelements. 
+Concurrent search for multiple webelements.
 Funtionality of element() can be expanded by adding
 new functions to search_methods dictionary.
+
+Funtionality is three part: 
+element() - public interface
+method - customize results
+_find() - get results
+
+of those parts method is changeable
 """
 # 30/04/2022
 # EternalAzure
@@ -17,19 +24,19 @@ import asyncio
 
 def element(driver: WebDriver, locators: List[tuple], attempts: int = 5, method = "first") -> WebElement:
     """
-    Returns first element found or None.
+    By default returns first element found or None.
     Searches for elements in locators concurrently.
 
     Arguments:
         driver: webdriver instance
         locators: search strategy for driver.find_element
         attempts: how many times will be tried
-        method: selects how result are returned
+        method: selects what results are returned
 
         eg. element(driver, [(By.XPATH, '//div[1]'), (By.XPATH, '//div[2]')], method='inclusive')
 
     Methods:
-        first: returns first found element
+        first: returns first webelement found
         inclusive: returns all results including None
         exclusive: returns all results excluding None
     """
